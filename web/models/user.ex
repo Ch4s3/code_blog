@@ -11,6 +11,7 @@ defmodule CodeBlog.User do
 
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
+    has_many :posts, CodeBlog.Post
   end
 
   @required_fields ~w(username email password password_confirmation)
