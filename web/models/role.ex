@@ -1,15 +1,15 @@
-defmodule CodeBlog.Post do
+defmodule CodeBlog.Role do
   use CodeBlog.Web, :model
 
-  schema "posts" do
-    field :title, :string
-    field :body, :string
-    belongs_to :user, CodeBlog.User
-    
+  schema "roles" do
+    field :name, :string
+    field :admin, :boolean, default: false
+    has_many :users, CodeBlog.User
+
     timestamps
   end
 
-  @required_fields ~w(title body)
+  @required_fields ~w(name admin)
   @optional_fields ~w()
 
   @doc """

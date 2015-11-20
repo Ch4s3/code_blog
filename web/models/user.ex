@@ -6,15 +6,17 @@ defmodule CodeBlog.User do
     field :username, :string
     field :email, :string
     field :password_digest, :string
+    has_many :posts, CodeBlog.Post
+    belongs_to :role, CodeBlog.Role
 
     timestamps
 
+    # Virtual Fields
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
-    has_many :posts, CodeBlog.Post
   end
 
-  @required_fields ~w(username email password password_confirmation)
+  @required_fields ~w(username email password password_confirmation role_id)
   @optional_fields ~w()
 
   @doc """
@@ -29,7 +31,7 @@ defmodule CodeBlog.User do
     |> hash_password
   end
 
-  def hash_password(changeset) do
+  defp hash_password(changeset) do
     if password = get_change(changeset, :password) do
       changeset
       |> put_change(:password_digest, hashpwsalt(password))
