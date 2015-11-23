@@ -36,7 +36,7 @@ defmodule CodeBlog.Mixfile do
      {:phoenix_html, "~> 2.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
-     {:comeonin, "~> 1.2.2"},
+     {:comeonin, "~> 1.6.0"},
      {:earmark, "~> 0.1.19"}]
   end
 
